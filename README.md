@@ -1,12 +1,12 @@
-# TrIA — RadioTriaje-AI · Grupo 8 · NF3
+# TrIA · Análisis de radiografías torácicas
 
-Aplicación académica local de análisis exploratorio de radiografías torácicas mediante un modelo preentrenado DenseNet-121. Incluye carga y control de imágenes, puntuaciones, mapa Grad-CAM, historial en SQLite e informes PDF trazables.
+TrIA es una aplicación web local que permite importar radiografías de tórax, ejecutar un modelo de clasificación preentrenado y consultar sus resultados. Incluye visualización Grad-CAM, historial de estudios e informes PDF con los datos de cada ejecución.
 
-**Para el profesor:** [guía de evaluación rápida](docs/GUIA_EVALUADOR_NF3.md). El repositorio es público; se puede consultar el código y las pruebas de GitHub Actions sin solicitar acceso. La memoria académica completa se entrega como PDF en Blackboard.
+**Trabajo académico — Grupo 8 · Proyecto de Inteligencia Artificial y Big Data (NF3).** El modelo se utiliza con fines experimentales: sus puntuaciones no están validadas para diagnóstico ni para establecer prioridades médicas.
 
-## Ejecutar TrIA en Windows — copiar y pegar en CMD
+## Ejecutar en Windows
 
-**Requisitos:** Git, Python 3.11 o 3.13 y conexión a Internet. Usar una ventana nueva de **CMD de Windows**. El directorio `RadioTriaje-NF3-evaluacion` no debe existir previamente.
+Se requiere **Git, Python 3.11 o 3.13 y conexión a Internet**. Copia este bloque completo en una consola **CMD** nueva:
 
 ```cmd
 cd /d "%USERPROFILE%"
@@ -15,47 +15,41 @@ cd RadioTriaje-NF3-evaluacion
 iniciar_tria_windows.cmd
 ```
 
-El lanzador prepara un entorno independiente `.venv-tria`, instala las dependencias de IA y abre `http://127.0.0.1:8000`. En el primer análisis descarga los pesos preentrenados. El motor normal es **IA NIH**. No hace falta ejecutar instrucciones de Linux ni activar Python manualmente.
+El lanzador crea el entorno de Python, instala las dependencias y abre **http://127.0.0.1:8000**. La primera inferencia puede necesitar descargar los pesos de DenseNet-121.
 
-El flujo es **seleccionar → cargar → analizar → ver Grad-CAM → descargar PDF → reabrir desde historial**. Para probar sin radiografías, cargar `data/demo_geometrico.png` (imagen artificial generada por el lanzador). La inferencia sobre esa imagen solo comprueba funcionamiento técnico.
+Para empezar con **radiografías reales del conjunto público NIH**, abre la [muestra de 20 casos](examples/nih/README.md) y selecciona uno de los PNG que están en `examples/nih/radiografias/`. El resultado se obtiene con **Cargar imagen → Ejecutar análisis**. El historial permite reabrir análisis y descargar el informe PDF.
 
-**Solo para pruebas sin IA:** `iniciar_tria_windows.cmd demo`. Este modo calcula estadísticas de imagen y no representa el uso habitual de la aplicación.
+Si el repositorio ya está clonado, usa `git pull --ff-only` desde su carpeta y ejecuta `iniciar_tria_windows.cmd`. El modo `iniciar_tria_windows.cmd demo` existe solo para pruebas del software sin cargar el modelo.
 
-## Qué se entrega
+## Radiografías y resultados
 
-- **Frontend:** HTML/CSS/JS adaptable, validación visible, lectura de resultados y recuperación de estudios.
-- **Backend:** FastAPI y SQLite/SQLAlchemy; API REST para estudios, análisis, imágenes, informes y auditoría.
-- **Modelo experimental:** TorchXRayVision DenseNet-121 NIH con pesos externos, tres puntuaciones no calibradas: neumotórax, derrame pleural y consolidación.
-- **Explicabilidad:** superposición Grad-CAM de activaciones, sin afirmaciones de localización anatómica validada.
-- **Evidencias:** informes PDF con imagen, mapa disponible, fecha, origen, identificadores, SHA-256 y revisión cuando se conoce.
-- **Pruebas:** suite pytest, navegador Chromium, smoke IA con pesos reales, muestra exploratoria etiquetada NIH de 20 imágenes.
+[**Ver las 20 radiografías NIH, etiquetas originales, puntuaciones y hashes**](examples/nih/README.md)
 
-## Verificar el producto sin instalarlo
+El conjunto de ejemplos incluye una imagen por fichero, la etiqueta NIH disponible, tres puntuaciones generadas por el modelo, el SHA-256 del archivo original y el registro de procedencia. Las etiquetas proceden de informes procesados automáticamente; no constituyen diagnósticos verificados por el grupo.
 
-En [GitHub Actions](https://github.com/webactiva-pro/RadioTriaje-IA/actions) pueden consultarse los workflows de **pruebas Python 3.11/3.13**, **navegador** e **inferencia con pesos reales**. El workflow NIH adicional es de ejecución manual. Los archivos de código, pruebas y resultados tabulares NIH están versionados en este repositorio, sin distribuir datos de pacientes ni pesos de terceros.
+## Organización del proyecto
 
-Documentación: [guía del evaluador](docs/GUIA_EVALUADOR_NF3.md) · [arquitectura y correspondencia NF2→NF3](docs/NF3_ESTADO_IMPLEMENTACION.md) · [protocolo NIH](docs/NF3_VALIDACION_NIH.md) · [manifiesto y hashes](docs/NF3_NIH_20_MANIFEST.json) · [resultados](docs/NF3_NIH_20_RESULTADOS.csv).
+| Carpeta | Contenido |
+|---|---|
+| [`src/tria/`](src/tria/) | API, carga y preprocesamiento, inferencia, Grad-CAM, SQLite e informes |
+| [`src/tria/web/`](src/tria/web/) | Interfaz HTML, CSS y JavaScript |
+| [`examples/nih/`](examples/nih/) | 20 radiografías NIH con sus resultados y datos de procedencia |
+| [`tests/`](tests/) | Pruebas unitarias e integración |
+| [`scripts/`](scripts/) | Generación de imágenes de prueba, lote NIH y pruebas técnicas |
+| [`environment/`](environment/) | Dependencias base, de desarrollo y del modelo |
+| [`.github/workflows/`](.github/workflows/) | Ejecuciones automáticas del backend, navegador e IA |
+| [`docs/`](docs/) | Historia del proyecto, diseño, arquitectura, decisiones y evaluación |
 
-## Instalación manual en Linux/macOS
+> La carpeta `data/` se utiliza para archivos generados localmente y no contiene radiografías versionadas. Las imágenes publicadas están en `examples/nih/radiografias/`.
 
-Solo si no se usa Windows; estos comandos **no son para CMD**.
+## Documentación
 
-```bash
-git clone https://github.com/webactiva-pro/RadioTriaje-IA.git
-cd RadioTriaje-IA
-python3.11 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r environment/requirements-ml.txt
-python -m pip install -e . --no-deps
-python -m uvicorn tria.api:app --host 127.0.0.1 --port 8000
-```
+[**Índice de documentación**](docs/README.md) · [Evolución desde Fase 0 y NF2](docs/01_CONTEXTO_Y_FASES.md) · [Arquitectura y requisitos](docs/02_DISENO_Y_ARQUITECTURA.md) · [Decisiones de implementación](docs/03_IMPLEMENTACION_Y_DECISIONES.md) · [Datos y evaluación](docs/04_DATOS_Y_RESULTADOS.md) · [Reproducibilidad](docs/05_EJECUCION_Y_VERIFICACION.md)
 
-Para ejecutar la suite sin PyTorch: `python -m pip install -r environment/requirements-dev.txt`, después `python -m pip install -e . --no-deps` y `python -m pytest -q tests`. La aplicación inicia el motor de IA por defecto; el modo sin IA se utiliza únicamente en pruebas.
+El código y las pruebas pueden consultarse sin instalar nada en [GitHub Actions](https://github.com/webactiva-pro/RadioTriaje-IA/actions). Esta es una copia de entrega pública; el desarrollo anterior se realizó en un repositorio privado. No se ha importado su historial ni documentación grupal con datos personales.
 
-## Alcance, procedencia y atribuciones
+## Créditos y límites
 
-Esta es una **demostración informática académica**, no una herramienta para diagnóstico o priorización médica. Las puntuaciones no están calibradas ni validadas clínicamente, Grad-CAM no verifica lesiones, y el conjunto NIH no constituye una validación independiente del modelo entrenado en ese dominio. No subir ni procesar información identificable de pacientes.
+El modelo y los pesos proceden de [TorchXRayVision](https://github.com/mlmed/torchxrayvision) (Joseph P. Cohen y colaboradores). Las imágenes son del conjunto [NIH ChestX-ray14](https://nihcc.app.box.com/v/ChestXray-NIHCC), publicado por el **NIH Clinical Center**, y deben citarse con Wang et al., *ChestX-ray8* (CVPR 2017, DOI [10.1109/CVPR.2017.369](https://doi.org/10.1109/CVPR.2017.369)). La publicación de esta selección se basa en los términos NIH de uso abierto con atribución; las imágenes se obtuvieron de un espejo público y se identifican con hashes, sin confirmar coincidencia binaria con los originales del NIH.
 
-Modelo y librería externos: [TorchXRayVision](https://github.com/mlmed/torchxrayvision), Joseph P. Cohen y colaboradores ([publicación](https://arxiv.org/abs/2111.00595)). Dataset: [NIH ChestX-ray14](https://nihcc.app.box.com/v/ChestXray-NIHCC), Wang et al. (CVPR 2017), DOI [10.1109/CVPR.2017.369](https://doi.org/10.1109/CVPR.2017.369). Se empleó ChatGPT como asistencia en implementación, pruebas, interfaz y documentación; los resultados se reportan con evidencias de ejecución.
-
-**Publicación para evaluación:** esta copia contiene exclusivamente los archivos técnicos de NF3 y documentos públicos seleccionados, sin el historial del fork privado. No incluye pesos, radiografías originales ni documentos académicos previos con datos de los integrantes. No se concede una licencia general de reutilización sobre las contribuciones del grupo.
+Se ha usado ChatGPT como apoyo en estructura, programación, pruebas y documentación. TrIA no incluye entrenamiento propio acreditado, evaluación clínica independiente ni un motor de triaje asistencial.

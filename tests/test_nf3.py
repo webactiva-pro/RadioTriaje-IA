@@ -306,7 +306,7 @@ def test_windows_launcher_uses_compatible_isolated_environment_and_valid_ml_path
 
 def test_readme_contains_copyable_windows_cmd_start():
     readme = (Path(__file__).resolve().parents[1] / 'README.md').read_text(encoding='utf-8')
-    section = readme.split('## Ejecutar TrIA en Windows', 1)[1].split('## Qué se entrega', 1)[0]
+    section = readme.split('## Ejecutar en Windows', 1)[1].split('## Radiografías y resultados', 1)[0]
     block = section.split('```cmd', 1)[1].split('```', 1)[0]
     commands = [line.strip() for line in block.splitlines() if line.strip()]
     assert commands == [

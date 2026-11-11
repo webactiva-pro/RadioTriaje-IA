@@ -1,0 +1,8 @@
+# OPcIONAL: pesos pretrained se descargan desde el proveedor SOLO al ejecutar
+# TRIA_MODEL_BACKEND=xrv. No se incluyen pesos ni datos sanitarios en Git.
+-r requirements.txt
+torch==2.10.0
+torchvision==0.25.0
+torchxrayvision==1.5.7
+# Requerido para ejecutar el smoke de integración con FastAPI TestClient
+httpx==0.28.1

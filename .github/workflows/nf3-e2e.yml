@@ -1,0 +1,32 @@
+name: NF3 - prueba E2E web y capturas
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  navegador:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependencias backend y navegador
+        run: |
+          python -m pip install -r environment/requirements-dev.txt
+          python -m pip install -e . --no-deps
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Carga de imagen y flujo completo en navegador real
+        run: python scripts/prueba_ui_local.py
+      - name: Guardar pruebas visuales automatizadas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf3-evidencias-frontend
+          path: evidencias_locales/*.png
+          if-no-files-found: warn
+          retention-days: 14

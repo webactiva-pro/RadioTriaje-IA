@@ -1,0 +1,11 @@
+# NF3: entorno base. No contiene PyTorch: la ejecución local debe ser ligera.
+# Versiones fijadas y probadas en GitHub Actions con Python 3.11 y 3.13 (Ubuntu).
+fastapi==0.128.2
+uvicorn==0.48.0
+python-multipart==0.0.29
+pillow==12.3.0
+numpy==2.3.5
+sqlalchemy==2.0.50
+reportlab==4.4.9
+pydicom==3.0.2
+requests==2.34.2

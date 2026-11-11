@@ -1,0 +1,61 @@
+# ==========================================
+# Repositorio Oficial RadioTriage-AI
+# Git Ignore para Python, Deep Learning y Datos
+# ==========================================
+
+# Directorio de laboratorio / referencia interna
+_referencia_laboratorio/
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+
+# Caches y compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Caches de pruebas y linters
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Variables de entorno y secretos
+.env
+*.env
+*.pem
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Modelos y pesos de Deep Learning (se guardan en almacenamiento externo/DVC)
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+
+# Datos locales y descargas de datasets pesados
+data/*
+!data/.gitkeep
+
+# Bases de datos y logs
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.parquet
+
+# TrIA NF3 - archivos y evidencias locales
+.tria-local/
+evidencias_locales/
+.venv-tria/

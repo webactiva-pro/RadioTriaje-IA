@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>TrIA | Análisis de radiografías</title>
+  <meta name="description" content="Análisis de radiografías torácicas con IA para un proyecto académico.">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Saltar al área de trabajo</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="TrIA Grupo 8">
+        <span class="brand-mark" aria-hidden="true">T<span>·</span></span>
+        <span><strong>TrIA</strong><small>RadioTriaje-AI · Grupo 8</small></span>
+      </div>
+      <div class="top-actions"><span id="model-pill" class="engine-pill">Comprobando modelo…</span>
+        <span class="academic-pill">PROYECTO ACADÉMICO</span></div>
+    </div>
+  </header>
+  <main id="workspace" class="workspace">
+    <section class="intro" aria-labelledby="page-heading">
+      <div>
+        <p class="eyebrow">ANÁLISIS DE IMÁGENES TORÁCICAS</p>
+        <h1 id="page-heading">Análisis de radiografías</h1>
+        <p>Sube una radiografía, consulta los resultados del modelo y descarga su informe.</p>
+      </div>
+      
+    </section>
+
+    <nav class="steps" aria-label="Flujo de trabajo">
+      <div class="step active" id="step-upload"><span>01</span><div><strong>Cargar</strong><small>Seleccionar imagen</small></div></div>
+      <div class="step" id="step-validate"><span>02</span><div><strong>Revisar</strong><small>Datos y origen</small></div></div>
+      <div class="step" id="step-analyse"><span>03</span><div><strong>Resultados</strong><small>Análisis e informe</small></div></div>
+    </nav>
+
+    <div class="layout">
+      <section class="panel image-panel" aria-labelledby="import-title">
+        <div class="panel-heading"><span class="section-num">01</span><div>
+          <h2 id="import-title">Radiografía</h2><p>Se mostrará la imagen preparada para el análisis.</p>
+        </div><span class="panel-label" id="study-label">SIN IMAGEN</span></div>
+
+        <form id="upload-form" class="upload-form">
+          <label class="drop-area" id="drop-area" for="image-file">
+            <span class="drop-icon" aria-hidden="true">＋</span>
+            <span class="drop-title">Arrastra una imagen o selecciónala</span>
+            <span class="drop-hint">PNG, JPG o DICOM · hasta 12 MB</span>
+          </label>
+          <input id="image-file" type="file" accept=".png,.jpg,.jpeg,.dcm,application/dicom,image/png,image/jpeg" required>
+          <div class="action-row"><span id="filename" class="filename">Ningún archivo seleccionado</span>
+            <button class="button button-primary" id="upload-button" type="submit">Cargar imagen</button></div>
+        </form>
+        <div id="progress" class="status-line" role="status" aria-live="polite">Selecciona una imagen para empezar.</div>
+
+        <div id="study" hidden>
+          <div class="image-frame"><img id="preview" alt="Radiografía normalizada del estudio seleccionado" src=""></div>
+          <div class="metadata">
+            <div class="metadata-top"><h3>Ficha de estudio</h3><span id="source-status" class="source-pill">Origen sin acreditar</span></div>
+            <dl id="study-info"></dl>
+            <div class="copy-actions"><button type="button" class="button button-ghost" id="copy-hash">Copiar SHA-256</button><button type="button" class="button button-primary" id="analyse">Analizar con IA <span aria-hidden="true">→</span></button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel analysis-panel" aria-labelledby="result-title">
+        <div class="panel-heading"><span class="section-num">02</span><div>
+          <h2 id="result-title">Resultados</h2><p id="model-info">Comprobando modelo…</p>
+        </div></div>
+        <div id="empty" class="empty-state"><div class="empty-icon" aria-hidden="true">◎</div><h3>Sin análisis todavía</h3><p>Carga una imagen o abre un estudio del historial.</p></div>
+        <div id="results" hidden>
+          <div class="result-top"><div><span class="overline">ESTADO</span><strong class="result-state" id="analysis-status"></strong></div>
+            </div>
+          <p class="analysis-message" id="analysis-message"></p>
+          <p class="result-warning" id="result-safety">Resultados orientativos. No válidos para diagnóstico ni para establecer urgencia médica.</p>
+          <div class="score-heading"><h3 id="score-title">Puntuaciones del modelo</h3><span id="score-note">NO CALIBRADAS</span></div>
+          <div id="scores" class="scores"></div>
+          <figure id="heatmap-figure" class="heatmap-card" hidden>
+            <div class="figure-title"><strong>Mapa Grad-CAM</strong><span id="heatmap-target">Activación del modelo</span></div>
+            <img id="heatmap" alt="Superposición Grad-CAM de la ejecución seleccionada; no verifica lesiones" src="">
+            <figcaption>Muestra qué regiones influyen en la salida del modelo; no identifica lesiones confirmadas.</figcaption>
+          </figure>
+          <div class="export"><div><strong>Informe PDF</strong><p>Radiografía, resultados y trazabilidad.</p></div>
+            <a id="report-link" class="button button-primary" href="#" download>Descargar informe <span aria-hidden="true">↗</span></a></div>
+          <div class="select-analysis" id="select-analysis" hidden><label for="analysis-select">Otras ejecuciones del estudio</label><select id="analysis-select"></select></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel history-panel" aria-labelledby="history-title">
+      <div class="panel-heading history-head"><span class="section-num">03</span><div><h2 id="history-title">Historial</h2><p>Consulta estudios y análisis anteriores.</p></div>
+        <button class="button button-ghost" id="refresh-history" type="button">Actualizar</button></div>
+      <ul id="history" class="history-list" aria-label="Estudios registrados"></ul>
+    </section>
+    <footer class="footer">TrIA · Grupo 8 <span>Proyecto de Inteligencia Artificial y Big Data · NF3</span></footer>
+  </main>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>

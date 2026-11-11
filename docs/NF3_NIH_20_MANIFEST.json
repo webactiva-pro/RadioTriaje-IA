@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-10T20:26:36.015148+00:00",
+  "source_metadata_url": "https://huggingface.co/datasets/alkzar90/NIH-Chest-X-ray-dataset/resolve/main/data/Data_Entry_2017_v2020.csv",
+  "metadata_sha256": "dc1d2df67fdc1c5a7601d48699cda2b13dc2c4841488b4183dcf04884dbaca11",
+  "test_list_sha256": "38ca5ef7f756092946f57c1a59faca882ed589a1ab1f72590b45dc06c6d5e1cc",
+  "per_group": 5,
+  "count": 20,
+  "attribution": {
+    "dataset": "NIH ChestX-ray14",
+    "owner": "NIH Clinical Center",
+    "original": "https://nihcc.app.box.com/v/ChestXray-NIHCC",
+    "reference": "Wang et al., ChestX-ray8, CVPR 2017, doi:10.1109/CVPR.2017.369",
+    "mirror": "Public NIH image copy maintained by third-party researchers (unverified original hashes)",
+    "label_limitations": "Etiquetas extraídas por NLP de informes; no adjudicadas por radiólogos para esta muestra.",
+    "model_limitations": "El modelo NIH fue entrenado en el dominio NIH; NO es validación independiente ni clínica."
+  },
+  "selection": "solo etiquetas únicas, 1 imagen/paciente, de test_list.txt oficial; primer nombre ordenado por clase",
+  "sampling_warning": "Muestra equilibrada y sesgada para smoke; no sirve para reclamar rendimiento clínico.",
+  "samples": [
+    {
+      "image_id": "00000013_011.png",
+      "group": "Pneumothorax",
+      "labels": [
+        "Pneumothorax"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "95dbc37a73ad0ee21eb3de9a8620c1ab778a3f4be11d4e6e96bb760e46a8ff43",
+      "bytes": 460693,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000013_011.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000013_011.png"
+    },
+    {
+      "image_id": "00000116_012.png",
+      "group": "Pneumothorax",
+      "labels": [
+        "Pneumothorax"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "fb91173cbb3e5408ddaed7a056d013284006b7dc12b51463ff7284097c051170",
+      "bytes": 342240,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000116_012.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000116_012.png"
+    },
+    {
+      "image_id": "00000211_023.png",
+      "group": "Pneumothorax",
+      "labels": [
+        "Pneumothorax"
+      ],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "24714c73195565846ff5d710348f1084fdd55048ba2196dad587719b99e2742b",
+      "bytes": 378175,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000211_023.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000211_023.png"
+    },
+    {
+      "image_id": "00000246_008.png",
+      "group": "Pneumothorax",
+      "labels": [
+        "Pneumothorax"
+      ],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "8c0e30c0ecd97a6beb8c9517d67b2d7f4776433b5df00fbc8dd467ed9ed623e2",
+      "bytes": 409894,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000246_008.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000246_008.png"
+    },
+    {
+      "image_id": "00000467_013.png",
+      "group": "Pneumothorax",
+      "labels": [
+        "Pneumothorax"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "93694b6b53f518d933477b23cfacc037396f5adfb2b63da0592f81b6212cce35",
+      "bytes": 420178,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000467_013.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000467_013.png"
+    },
+    {
+      "image_id": "00000041_006.png",
+      "group": "Effusion",
+      "labels": [
+        "Effusion"
+      ],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "86434e62341bcb6caf71554fb1b72f0ebb19413363a11d051d1c15111dcba641",
+      "bytes": 451313,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000041_006.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000041_006.png"
+    },
+    {
+      "image_id": "00000150_000.png",
+      "group": "Effusion",
+      "labels": [
+        "Effusion"
+      ],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "5958a26c75692d46173e6774266a1f8b1c762ef21fc06bf89bd409b2a12d4531",
+      "bytes": 426179,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000150_000.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000150_000.png"
+    },
+    {
+      "image_id": "00000181_003.png",
+      "group": "Effusion",
+      "labels": [
+        "Effusion"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "f08a23c2e74a597e81db7effa74f909cb4a4cfc053fb77256ed3311fe1ae9864",
+      "bytes": 363352,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000181_003.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000181_003.png"
+    },
+    {
+      "image_id": "00000344_002.png",
+      "group": "Effusion",
+      "labels": [
+        "Effusion"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "356a369a8d19fb1a4a3b6195282978638c4d9be602d0017ac50f4d97559993d9",
+      "bytes": 429767,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000344_002.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000344_002.png"
+    },
+    {
+      "image_id": "00000398_001.png",
+      "group": "Effusion",
+      "labels": [
+        "Effusion"
+      ],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "e72d70ca255b7357d240963ec230789f1610e0018faeef0136eea6ec41789cb1",
+      "bytes": 355066,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000398_001.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000398_001.png"
+    },
+    {
+      "image_id": "00000032_016.png",
+      "group": "Consolidation",
+      "labels": [
+        "Consolidation"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "dfd33262ecfcbae5863de2f7afa9d3dc8ca7693db26fad5a5c5308f2d4feb340",
+      "bytes": 328653,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000032_016.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000032_016.png"
+    },
+    {
+      "image_id": "00000468_034.png",
+      "group": "Consolidation",
+      "labels": [
+        "Consolidation"
+      ],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "b999446122456fe115b8b224133bb9e02e994b0bd3dbcfc47bc1c7dd8f202f44",
+      "bytes": 403911,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000468_034.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000468_034.png"
+    },
+    {
+      "image_id": "00000583_012.png",
+      "group": "Consolidation",
+      "labels": [
+        "Consolidation"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "44e0a189816992ba481aea69e2cdf82ba3f52a8238950d8ad8b7be7b71c20a90",
+      "bytes": 341460,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000583_012.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000583_012.png"
+    },
+    {
+      "image_id": "00001006_011.png",
+      "group": "Consolidation",
+      "labels": [
+        "Consolidation"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "0bf736ef50e758410448029276514fe9a47db1e5c0811fffa984063bacbabd67",
+      "bytes": 368970,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00001006_011.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00001006_011.png"
+    },
+    {
+      "image_id": "00001170_010.png",
+      "group": "Consolidation",
+      "labels": [
+        "Consolidation"
+      ],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "36163fa7b59d602a85644aaaf3009049e33859c1f185e4adad3b00e80f6cb5f6",
+      "bytes": 315919,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00001170_010.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00001170_010.png"
+    },
+    {
+      "image_id": "00000092_000.png",
+      "group": "No Finding",
+      "labels": [],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "67824ea3989737581c78a88c45298fffc5060fe4f37f4ea9d80c46b92f187a27",
+      "bytes": 389503,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000092_000.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000092_000.png"
+    },
+    {
+      "image_id": "00000149_000.png",
+      "group": "No Finding",
+      "labels": [],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "9133504057d86d6a7085fbc1ded7a0a11e382163f0ce1ec990f40153b4f406f5",
+      "bytes": 423465,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000149_000.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000149_000.png"
+    },
+    {
+      "image_id": "00000193_000.png",
+      "group": "No Finding",
+      "labels": [],
+      "view": "AP",
+      "source_split": "nih_official_test_list",
+      "sha256": "92664c9056ba1e4f3ca1cbcfc7be99c312fa597e27875d3fbdef83d53d2606fe",
+      "bytes": 365724,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000193_000.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000193_000.png"
+    },
+    {
+      "image_id": "00000218_002.png",
+      "group": "No Finding",
+      "labels": [],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "c0f3daf9cddde81346886b8d31fb19bdc0c57bbbedc0111a3e96edf463cd0931",
+      "bytes": 362275,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000218_002.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000218_002.png"
+    },
+    {
+      "image_id": "00000312_000.png",
+      "group": "No Finding",
+      "labels": [],
+      "view": "PA",
+      "source_split": "nih_official_test_list",
+      "sha256": "66e48cb11186455db91d56dd5a6f1f955dc207f2ab209be166a2f9a14925ca10",
+      "bytes": 441095,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "path": "images/00000312_000.png",
+      "mirror_url": "https://nih-chest-x-rays.s3.us-east-2.amazonaws.com/images_1024x1024/00000312_000.png"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "status": "technical_smoke_only",
+  "n": 20,
+  "mode": "xrv",
+  "all_pdf": true,
+  "gradcam_generated": 20,
+  "stats_descriptive_only": {
+    "Pneumothorax": {
+      "n_pos": 5,
+      "n_other": 15,
+      "mean_pos": 0.197106,
+      "mean_other": 0.046805
+    },
+    "Effusion": {
+      "n_pos": 5,
+      "n_other": 15,
+      "mean_pos": 0.141804,
+      "mean_other": 0.138916
+    },
+    "Consolidation": {
+      "n_pos": 5,
+      "n_other": 15,
+      "mean_pos": 0.057116,
+      "mean_other": 0.051763
+    }
+  },
+  "warning": "NIH was used to train the pretrained model; NOT independent, clinical or representative validation. 'No Finding' is not clinical normality. Scores are not calibrated probabilities.",
+  "sources": {
+    "dataset": "NIH ChestX-ray14",
+    "owner": "NIH Clinical Center",
+    "original": "https://nihcc.app.box.com/v/ChestXray-NIHCC",
+    "reference": "Wang et al., ChestX-ray8, CVPR 2017, doi:10.1109/CVPR.2017.369",
+    "mirror": "Public NIH image copy maintained by third-party researchers (unverified original hashes)",
+    "label_limitations": "Etiquetas extraídas por NLP de informes; no adjudicadas por radiólogos para esta muestra.",
+    "model_limitations": "El modelo NIH fue entrenado en el dominio NIH; NO es validación independiente ni clínica."
+  }
+}

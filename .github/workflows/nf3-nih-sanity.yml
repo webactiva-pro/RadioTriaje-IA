@@ -1,0 +1,40 @@
+name: NF3 - lote NIH etiquetado (prueba exploratoria)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lote-nih:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias de IA CPU
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.10.0 torchvision==0.25.0
+          python -m pip install -r environment/requirements-ml.txt
+          python -m pip install -r environment/requirements-dev.txt
+          python -m pip install -e . --no-deps
+      - name: Validar lógica de selección NIH
+        run: python -m pytest -q tests/test_validacion_nih.py
+      - name: Descargar 20 radiografías etiquetadas (5 por grupo)
+        run: python scripts/validacion_nih.py download --per-group 5
+      - name: Evaluar el lote con pesos reales NIH DenseNet-121
+        run: python scripts/validacion_nih.py evaluate --mode xrv
+      - name: Publicar manifiesto, imágenes autorizadas y resultados (no en Git)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf3-nih-lote-y-resultados
+          path: |
+            data/validacion_nih/manifest.json
+            data/validacion_nih/resumen_nih.json
+            data/validacion_nih/resultados_nih.csv
+            data/validacion_nih/images/*.png
+          if-no-files-found: warn
+          retention-days: 7

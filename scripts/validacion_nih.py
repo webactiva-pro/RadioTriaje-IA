@@ -2,7 +2,9 @@
 
 NO válida diagnóstico, sensibilidad clínica ni generalización externa.
 Fuentes: NIH Clinical Center, etiquetas NLP de Data_Entry_2017_v2020.csv.
-No incorpora imágenes, datos personales ni artefactos de terceros al repositorio.
+La selección académica de 20 PNG NIH desidentificados se publica en
+examples/nih/radiografias/ junto con sus hashes y etiquetas. Este script
+trabaja con copias locales y NO distribuye checkpoints ni datos privados.
 """
 from __future__ import annotations
 

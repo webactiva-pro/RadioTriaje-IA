@@ -46,7 +46,7 @@ El conjunto de ejemplos incluye una imagen por fichero, la etiqueta NIH disponib
 
 [**Índice de documentación**](docs/README.md) · [Evolución desde Fase 0 y NF2](docs/01_CONTEXTO_Y_FASES.md) · [Arquitectura y requisitos](docs/02_DISENO_Y_ARQUITECTURA.md) · [Decisiones de implementación](docs/03_IMPLEMENTACION_Y_DECISIONES.md) · [Datos y evaluación](docs/04_DATOS_Y_RESULTADOS.md) · [Reproducibilidad](docs/05_EJECUCION_Y_VERIFICACION.md)
 
-El código y las pruebas pueden consultarse sin instalar nada en [GitHub Actions](https://github.com/webactiva-pro/RadioTriaje-IA/actions). Esta es una copia de entrega pública; el desarrollo anterior se realizó en un repositorio privado. No se ha importado su historial ni documentación grupal con datos personales.
+El código y las pruebas pueden consultarse sin instalar nada en [GitHub Actions](https://github.com/webactiva-pro/RadioTriaje-IA/actions). Para comprobar las huellas SHA-256 de las 20 radiografías y repetir los tests, seguir la [guía de verificación](docs/05_EJECUCION_Y_VERIFICACION.md). La **memoria académica de Fase 2** se entrega aparte en Blackboard como `fase2_grupo8.pdf` e identifica el commit completo evaluable. Esta es una copia de entrega pública; el desarrollo anterior se realizó en un repositorio privado. No se ha importado su historial ni documentación grupal con datos personales.
 
 ## Créditos y límites
 

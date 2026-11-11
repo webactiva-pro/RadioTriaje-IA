@@ -18,7 +18,7 @@ La selección es **intencional y equilibrada**, con pacientes distintos dentro d
 ## Descarga y consulta
 
 - [Galería de las 20 radiografías y puntuaciones](../examples/nih/README.md)
-- [Archivos PNG originales de la muestra](../examples/nih/radiografias/)
+- [PNG publicados de la muestra (copia del espejo documentado)](../examples/nih/radiografias/)
 - [Manifiesto con hash y fuente por imagen](NF3_NIH_20_MANIFEST.json)
 - [CSV completo de puntuaciones](NF3_NIH_20_RESULTADOS.csv)
 - [Resumen automatizado](NF3_NIH_20_RESUMEN.json)
@@ -26,7 +26,7 @@ La selección es **intencional y equilibrada**, con pacientes distintos dentro d
 
 ## Experimento ejecutado
 
-El motor fue TorchXRayVision `densenet121-res224-nih`. Se ejecutaron 20 inferencias; las pruebas técnicas registraron 20 PDFs y 20 mapas Grad-CAM generados. El lote se analizó sobre una revisión anterior a las mejoras visuales del informe final, con el mismo adaptador del modelo.
+El motor fue TorchXRayVision `densenet121-res224-nih`. Se ejecutaron 20 inferencias; las pruebas técnicas registraron 20 PDF de análisis y 20 mapas Grad-CAM generados. Los **20 PNG de entrada** se encuentran en el repositorio público, además de sus metadatos y resultados. El lote se analizó sobre una revisión anterior a las mejoras visuales del informe final, con el mismo adaptador del modelo.
 
 Puntuaciones medias **sin calibración** en los casos que tienen cada etiqueta frente a los otros 15 casos:
 
